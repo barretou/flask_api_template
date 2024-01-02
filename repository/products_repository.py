@@ -5,9 +5,9 @@ sys.dont_write_bytecode = True
 
 
 from flask import request, jsonify, make_response
-from models.products_model import Product, db, product_schema, products_schema
+from entities.products_entity import Product, db, product_schema, products_schema
 
-def get_all_products_service():
+def get_all_products():
     try:
         all_products = Product.query.all()
         serialized_products = products_schema.dump(all_products)
@@ -16,7 +16,7 @@ def get_all_products_service():
     except Exception as e:
         return jsonify({"error": str(e)})
 
-def get_product_service(id):
+def get_poduct(id):
     try:
         product = Product.query.get(id)
         if product:
@@ -28,7 +28,7 @@ def get_product_service(id):
     except Exception as e:
         return jsonify({"error": str(e)})
 
-def add_product_service():
+def add_poduct():
     try:
         name = request.json['name']
         description = request.json['description']
@@ -46,7 +46,7 @@ def add_product_service():
         db.session.rollback()
         return jsonify({"error": str(e)})
 
-def update_product_service(id):
+def update_poduct(id):
     try:
         product = Product.query.get(id)
         if product:
@@ -71,7 +71,7 @@ def update_product_service(id):
         db.session.rollback()
         return jsonify({"error": str(e)})
 
-def delete_product_service(id):
+def delete_poduct(id):
     try:
         product = Product.query.get(id)
         if product:

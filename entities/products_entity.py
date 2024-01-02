@@ -4,10 +4,8 @@ import sys
 sys.dont_write_bytecode = True
 
 
-from flask_sqlalchemy import SQLAlchemy
+from database import db
 from marshmallow import Schema
-
-db = SQLAlchemy()
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)

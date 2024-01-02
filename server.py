@@ -4,7 +4,7 @@ import sys
 sys.dont_write_bytecode = True
 
 from flask import Flask
-from models.products_model import db
+from database import db
 from controllers.products_controller import products_bp
 
 # Factory app

@@ -3,8 +3,8 @@ import sys
 # Preventing __pycache__ generation.
 sys.dont_write_bytecode = True
 
-from flask import Flask, jsonify
-from config import create_app
+from flask import jsonify
+from server import create_app
 
 
 
