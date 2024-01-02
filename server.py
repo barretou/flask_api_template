@@ -7,8 +7,21 @@ from flask import Flask
 from database import db
 from controllers.products_controller import products_bp
 
-# Factory app
 def create_app():
+    """
+    Create and configure the Flask application.
+
+    Returns:
+        Flask: The configured Flask application instance.
+
+    This function creates a Flask application, registers blueprints, and initializes the database.
+    It sets up the SQLAlchemy configuration and creates the necessary database tables.
+
+    Example Usage:
+        app = create_app()
+        app.run(debug=True)
+
+    """
     app = Flask(__name__)
 
     # Register blueprints

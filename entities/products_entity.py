@@ -3,16 +3,19 @@ import sys
 # Preventing __pycache__ generation.
 sys.dont_write_bytecode = True
 
-
+from sqlalchemy import String, Integer, Float
+from sqlalchemy.orm import mapped_column
 from database import db
 from marshmallow import Schema
 
 class Product(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    description = db.Column(db.String(200))
-    price = db.Column(db.Float)
-    quantity = db.Column(db.Integer)
+    __tablename__ = "products"
+
+    id = mapped_column(Integer, primary_key=True)
+    name = mapped_column(String(100))
+    description = mapped_column(String(200))
+    price = mapped_column(Float)
+    quantity = mapped_column(Integer)
 
     def __init__(self, name, description, price, quantity):
         self.name = name
